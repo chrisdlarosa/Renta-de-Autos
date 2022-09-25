@@ -16,7 +16,6 @@ class InterfazCliente:
         print("( 3 ) Modificar Cliente")
         print("( 4 ) Imprimir Clientes")
         print("( 5 ) Salir")
-        
         opcion = int(input("Opcion: "))
         return opcion
 
@@ -59,7 +58,10 @@ class InterfazCliente:
         input("Preciona una tecla para continiar....")
 
     def limpiarInterfaz(self):
-        os.system ("clear")
+        if os.name == "posix":
+            os.system ("clear")
+        elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+            os.system ("cls")
 
     def menuCliente(self):
         opcion = None
@@ -74,6 +76,6 @@ class InterfazCliente:
             elif opcion == 4:
                 self.interfazImprimirCliente()
 
-#if __name__ == "__main__":
-#    interfa =InterfazCliente() 
-#    interfa.menuCliente()
+if __name__ == "__main__":
+    interfa =InterfazCliente()
+    interfa.menuCliente()

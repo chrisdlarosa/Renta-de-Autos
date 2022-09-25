@@ -16,7 +16,6 @@ class InterfazAutomovil:
         print("( 3 ) Modificar Automovil")
         print("( 4 ) Imprimir Automoviles")
         print("( 5 ) Salir")
-        
         opcion = int(input("Opcion: "))
         return opcion
 
@@ -61,7 +60,10 @@ class InterfazAutomovil:
         input("Preciona una tecla para continiar....")
 
     def limpiarInterfaz(self):
-        os.system ("clear")
+        if os.name == "posix":
+            os.system ("clear")
+        elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+            os.system ("cls")
 
     def menuAutomovil(self):
         opcion = None
@@ -77,5 +79,5 @@ class InterfazAutomovil:
                 self.interfazImprimirAutomovil()
 
 if __name__ == "__main__":
-    interfa =InterfazAutomovil() 
+    interfa =InterfazAutomovil()
     interfa.menuAutomovil()
